@@ -34,3 +34,12 @@ go run .
 ```bash
 make test
 ```
+
+## Potential Improvements
+
+- [ ] Add more test cases (different patterns, further generations)
+- [ ] Introduce generations iterator to open new options for testing
+- [ ] Separate view concerns (including printer) from gameoflife package
+- [ ] Research beyond typical implementation algorithm
+- [ ] Make it possible to parametrize the cli command (ie. with universe size or delay time)
+- [ ] Add CI configuration using Github Actions
