@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	universe := gameoflife.NewUniverse(25, 25)
+	universe := gameoflife.NewUniverse(25, 25, nil)
 	printer := gameoflife.NewPrinter("O ", ". ")
 
 	fmt.Println(printer.Print(universe))
