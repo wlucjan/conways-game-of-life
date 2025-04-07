@@ -1,31 +1,32 @@
-package gameoflife
+package gameoflife_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/wlucjan/conways-game-of-life/gameoflife"
 )
 
 func TestPattern_Center(t *testing.T) {
 	testCases := []struct {
 		name     string
-		pattern  Pattern
-		expected Coordinates
+		pattern  gameoflife.Pattern
+		expected gameoflife.Coordinates
 	}{
 		{
 			name:     "Single point pattern",
-			pattern:  Pattern{{X: 5, Y: 5}},
-			expected: Coordinates{X: 2, Y: 2},
+			pattern:  gameoflife.Pattern{{X: 5, Y: 5}},
+			expected: gameoflife.Coordinates{X: 2, Y: 2},
 		},
 		{
 			name:     "Block pattern",
-			pattern:  Pattern{{3, 3}, {4, 3}, {3, 4}, {4, 4}},
-			expected: Coordinates{X: 2, Y: 2},
+			pattern:  gameoflife.Pattern{{3, 3}, {4, 3}, {3, 4}, {4, 4}},
+			expected: gameoflife.Coordinates{X: 2, Y: 2},
 		},
 		{
 			name:     "Glider pattern",
-			pattern:  Pattern{{X: 1, Y: 0}, {X: 2, Y: 1}, {X: 0, Y: 2}, {X: 1, Y: 2}, {X: 2, Y: 2}},
-			expected: Coordinates{X: 1, Y: 1},
+			pattern:  gameoflife.Pattern{{X: 1, Y: 0}, {X: 2, Y: 1}, {X: 0, Y: 2}, {X: 1, Y: 2}, {X: 2, Y: 2}},
+			expected: gameoflife.Coordinates{X: 1, Y: 1},
 		},
 	}
 
@@ -41,17 +42,17 @@ func TestPattern_Center(t *testing.T) {
 func TestNewPattern(t *testing.T) {
 	testCases := []struct {
 		name        string
-		coords      []Coordinates
+		coords      []gameoflife.Coordinates
 		expectError bool
 	}{
 		{
 			name:        "Valid pattern",
-			coords:      []Coordinates{{0, 0}, {1, 1}},
+			coords:      []gameoflife.Coordinates{{0, 0}, {1, 1}},
 			expectError: false,
 		},
 		{
 			name:        "Empty coordinates slice",
-			coords:      []Coordinates{},
+			coords:      []gameoflife.Coordinates{},
 			expectError: true,
 		},
 		{
@@ -63,7 +64,7 @@ func TestNewPattern(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := NewPattern(tc.coords)
+			_, err := gameoflife.NewPattern(tc.coords)
 
 			if tc.expectError {
 				if err == nil {
