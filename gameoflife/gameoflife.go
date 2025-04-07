@@ -53,6 +53,23 @@ func (u Universe) Next() Universe {
 	return nextU
 }
 
+func (u Universe) Equals(other Universe) bool {
+	if len(u) != len(other) {
+		return false
+	}
+	for y, row := range u {
+		if len(row) != len(other[y]) {
+			return false
+		}
+		for x, cell := range row {
+			if cell != other[y][x] {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 func (u Universe) seed(p Pattern) {
 	patternCenter := p.Center()
 	universeCenter := u.center()

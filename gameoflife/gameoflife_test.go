@@ -42,3 +42,11 @@ func TestUniverse_Next(t *testing.T) {
 
 	assert.Equal(t, expected, printer.Print(nextUniverse))
 }
+
+func TestUniverse_Equals(t *testing.T) {
+	universe := gameoflife.NewUniverse(5, 5, gameoflife.GliderPattern)
+
+	otherUniverse := gameoflife.NewUniverse(5, 5, gameoflife.GliderPattern)
+
+	assert.True(t, universe.Equals(otherUniverse))
+}
